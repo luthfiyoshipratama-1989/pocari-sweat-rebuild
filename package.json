@@ -9,7 +9,7 @@
     "lint": "next lint",
     "pages:build": "npx @cloudflare/next-on-pages",
     "preview": "npm run pages:build && wrangler pages dev .vercel/output/static",
-    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
+    "deploy": "wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
     "@fontsource/bricolage-grotesque": "^5.3.0",
