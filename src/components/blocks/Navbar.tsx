@@ -13,7 +13,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Droplet, Waves, Candy, Info, Activity, Newspaper } from "lucide-react";
 
 type LinkItem = {
   title: string;
@@ -24,17 +23,17 @@ type LinkItem = {
 const productLinks: LinkItem[] = [
   {
     title: "Pocari Sweat",
-    href: "/products/pocari-sweat",
+    href: "/products/pocari-sweat-original",
     description: "Minuman isotonik original sejak 1980",
   },
   {
     title: "Ion Water",
-    href: "/products/ion-water",
+    href: "/products/pocari-sweat-ion-water",
     description: "Air ion untuk hidrasi ringan sehari-hari",
   },
   {
     title: "Jelly",
-    href: "/products/jelly",
+    href: "/products/pocari-sweat-jelly",
     description: "Pocari Sweat dalam bentuk jelly praktis",
   },
 ];
@@ -149,6 +148,15 @@ export function Header() {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <Link
+                  href="/hydration-calculator"
+                  className="inline-flex h-10 items-center justify-center px-4 text-sm font-medium hover:text-marine transition-colors"
+                >
+                  Kalkulator
+                </Link>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -232,6 +240,16 @@ function MobileMenu({
             {item.title}
           </Link>
         ))}
+
+        <div className="mt-4">
+          <Link
+            href="/hydration-calculator"
+            onClick={() => setOpen(false)}
+            className="block px-3 py-2 rounded-md text-sm font-medium hover:bg-accent transition-colors"
+          >
+            Kalkulator
+          </Link>
+        </div>
 
         <div className="mt-6">
           <Button

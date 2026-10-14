@@ -2,12 +2,9 @@
 import { notFound } from "next/navigation";
 import { Container } from "@/components/common/Container";
 import { Button } from "@/components/ui/button";
-import { getProductBySlug, getAllProducts } from "@/lib/queries";
+import { getProductBySlug } from "@/lib/queries";
 
-export async function generateStaticParams() {
-  const products = await getAllProducts();
-  return products.map((p: any) => ({ slug: p.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const product = await getProductBySlug(params.slug);
@@ -81,11 +78,7 @@ export default async function ProductDetailPage({
               </div>
             )}
 
-            <Button
-              asChild
-              size="lg"
-              className="bg-marine hover:bg-marine-dark text-white"
-            >
+            <Button asChild size="lg" className="bg-marine hover:bg-marine-dark text-white">
               <a href="https://pocarisweat.id" target="_blank" rel="noopener">
                 Beli Sekarang
               </a>
