@@ -1,22 +1,14 @@
 ﻿import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Bricolage_Grotesque } from "next/font/google";
+import "@fontsource/plus-jakarta-sans/400.css";
+import "@fontsource/plus-jakarta-sans/500.css";
+import "@fontsource/plus-jakarta-sans/600.css";
+import "@fontsource/bricolage-grotesque/600.css";
+import "@fontsource/bricolage-grotesque/700.css";
+import "@fontsource/bricolage-grotesque/800.css";
 import "../globals.css";
-import { cn } from "@/lib/utils";
 import { Header } from "@/components/blocks/Navbar";
 import { Footer } from "@/components/blocks/Footer";
 import { DevConsoleFilter } from "@/components/DevConsoleFilter";
-
-const fontSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-sans",
-});
-
-const fontDisplay = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-display",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pocari-sweat-rebuild.vercel.app"),
@@ -54,13 +46,7 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      className={cn(
-        "min-h-screen bg-background font-sans antialiased",
-        fontSans.variable,
-        fontDisplay.variable
-      )}
-    >
+    <div className="min-h-screen bg-background font-sans antialiased">
       <DevConsoleFilter />
       <Header />
       <main>{children}</main>
