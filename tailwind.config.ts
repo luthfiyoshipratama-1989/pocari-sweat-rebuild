@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+﻿import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: ["class"],
@@ -18,7 +18,7 @@ const config: Config = {
       },
     },
     extend: {
-      colors: {         // Pocari Sweat design tokens
+      colors: {
         marine: {
           DEFAULT: "#0091DA",
           dark: "#007AB8",
@@ -30,17 +30,13 @@ const config: Config = {
         },
         ink: "#0A0A0A",
         "gray-brand": "#6B7280",
-        marine: "#0091DA",
-        sky: "#7FD4F5",
-        ink: "#0A0A0A",
-        "gray-brand": "#6B7280",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0091DA",
+          DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
