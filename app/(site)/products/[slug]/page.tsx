@@ -1,10 +1,11 @@
 ﻿import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/common/Container";
+import { ProductImage } from "@/components/common/ProductImage";
 import { Button } from "@/components/ui/button";
 import { getProductBySlug } from "@/lib/queries";
 
-export const dynamic = "force-dynamic";
+export const runtime = "edge"
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const product = await getProductBySlug(params.slug);
@@ -20,33 +21,43 @@ export default async function ProductDetailPage({
   const product = await getProductBySlug(params.slug);
   if (!product) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    category: product.category,
+    brand: {
+      "@type": "Brand",
+      name: "Pocari Sweat",
+    },
+  };
+
   return (
     <section className="py-16 md:py-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Container>
         <Link
           href="/products"
-          className="text-sm text-muted-foreground hover:text-marine mb-8 inline-block"
+          className="text-sm text-muted-foreground hover:text-marine-text mb-8 inline-block"
         >
           ← Kembali ke Produk
         </Link>
 
         <div className="grid md:grid-cols-2 gap-12">
-          <div className="aspect-square bg-muted rounded-2xl overflow-hidden">
-            {product.image ? (
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                No image
-              </div>
-            )}
-          </div>
+          <ProductImage
+            src={product.image}
+            alt={product.name}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            priority
+            className="aspect-square bg-muted rounded-2xl overflow-hidden"
+          />
 
           <div>
-            <p className="text-xs text-marine font-medium uppercase tracking-wider mb-3">
+            <p className="text-xs text-marine-text font-medium uppercase tracking-wider mb-3">
               {product.category?.replace("-", " ")}
             </p>
             <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">

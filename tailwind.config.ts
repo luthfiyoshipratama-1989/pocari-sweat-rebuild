@@ -24,6 +24,7 @@ const config: Config = {
           dark: "#007AB8",
           light: "#33A8E3",
         },
+        "marine-text": "hsl(var(--marine-text))",
         sky: {
           DEFAULT: "#7FD4F5",
           light: "#B8E5FA",
@@ -71,6 +72,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],
+        display: ["var(--font-display)", "sans-serif"],
       },
     },
   },

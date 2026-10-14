@@ -1,6 +1,10 @@
 ﻿import Link from "next/link";
 import { Container } from "@/components/common/Container";
+import { ProductImage } from "@/components/common/ProductImage";
+import type { Product } from "@/data/types";
 import { getAllProducts } from "@/lib/queries";
+
+export const runtime = "edge"
 
 export const metadata = {
   title: "Produk",
@@ -28,25 +32,17 @@ export default async function ProductsPage() {
           </div>
         ) : (
           <div className="grid md:grid-cols-3 gap-8">
-            {products.map((p: any) => (
+            {products.map((p: Product) => (
               <Link key={p._id} href={`/products/${p.slug}`} className="group">
-                <div className="aspect-square bg-muted rounded-xl mb-4 overflow-hidden">
-                  {p.image ? (
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
-                      No image
-                    </div>
-                  )}
-                </div>
-                <p className="text-xs text-marine font-medium uppercase tracking-wider mb-1">
+                <ProductImage
+                  src={p.image}
+                  alt={p.name}
+                  className="aspect-square bg-muted rounded-xl mb-4 overflow-hidden"
+                />
+                <p className="text-xs text-marine-text font-medium uppercase tracking-wider mb-1">
                   {p.category?.replace("-", " ")}
                 </p>
-                <h3 className="font-medium group-hover:text-marine transition-colors">
+                <h3 className="font-medium group-hover:text-marine-text transition-colors">
                   {p.name}
                 </h3>
                 <p className="text-sm text-muted-foreground mt-1 line-clamp-2">

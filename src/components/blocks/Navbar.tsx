@@ -45,11 +45,6 @@ const aboutLinks: LinkItem[] = [
     description: "Sejarah & visi Pocari Sweat",
   },
   {
-    title: "Action",
-    href: "/action",
-    description: "Kampanye & event kami",
-  },
-  {
     title: "News",
     href: "/news",
     description: "Berita & artikel terbaru",
@@ -81,7 +76,7 @@ export function Header() {
         }
       )}
     >
-      <nav className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-2">
           <Link
             href="/"
@@ -152,7 +147,7 @@ export function Header() {
               <NavigationMenuItem>
                 <Link
                   href="/hydration-calculator"
-                  className="inline-flex h-10 items-center justify-center px-4 text-sm font-medium hover:text-marine transition-colors"
+                  className="inline-flex h-10 items-center justify-center px-4 text-sm font-medium hover:text-marine-text transition-colors"
                 >
                   Kalkulator
                 </Link>
@@ -175,11 +170,13 @@ export function Header() {
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-accent transition-colors"
-          aria-label="Toggle menu"
+          aria-label={open ? "Tutup menu" : "Buka menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           <MenuToggleIcon open={open} className="size-5" />
         </button>
-      </nav>
+      </div>
 
       <MobileMenu open={open} setOpen={setOpen} />
     </header>
@@ -211,7 +208,10 @@ function MobileMenu({
   if (!open) return null;
 
   return (
-    <div className="md:hidden fixed top-14 left-0 right-0 bottom-0 z-40 bg-background border-t border-border overflow-y-auto">
+    <div
+      id="mobile-menu"
+      className="md:hidden fixed top-14 left-0 right-0 bottom-0 z-40 bg-background border-t border-border overflow-y-auto"
+    >
       <div className="flex flex-col p-4 gap-1">
         <div className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
           Products

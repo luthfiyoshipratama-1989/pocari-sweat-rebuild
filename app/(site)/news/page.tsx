@@ -1,12 +1,15 @@
 ﻿import { Container } from "@/components/common/Container";
+import { ProductImage } from "@/components/common/ProductImage";
+import type { Article } from "@/data/types";
 import { Card } from "@/components/ui/card";
 import { getAllArticles } from "@/lib/queries";
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+
+export const runtime = "edge"
 
 export const metadata: Metadata = {
-  title: "Berita & Artikel - Pocari Sweat",
+  title: "Berita & Artikel",
   description: "Baca artikel terkini tentang hidrasi, kesehatan, dan tips gaya hidup aktif dari Pocari Sweat.",
 };
 
@@ -29,29 +32,22 @@ export default async function NewsPage() {
       <Container>
         {articles && articles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {articles.map((article: any) => (
+            {articles.map((article: Article) => (
               <Link key={article._id} href={`/news/${article.slug}`}>
                 <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full cursor-pointer border border-gray-100">
                   {/* Thumbnail */}
-                  <div className="relative w-full h-48 bg-gray-200">
-                    {article.thumbnail ? (
-                      <Image
-                        src={article.thumbnail}
-                        alt={article.title}
-                        fill
-                        className="object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-[#0091DA]/20 to-[#0091DA]/5 flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">No image</span>
-                      </div>
-                    )}
-                  </div>
+                  <ProductImage
+                    src={article.thumbnail}
+                    alt={article.title}
+                    variant="article"
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="relative w-full h-48"
+                  />
 
                   {/* Content */}
                   <div className="p-6 flex flex-col gap-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-[#0091DA] uppercase tracking-wide">
+                      <span className="text-xs font-semibold text-marine-text uppercase tracking-wide">
                         {article.category || "Artikel"}
                       </span>
                       <span className="text-xs text-gray-500">
@@ -64,7 +60,7 @@ export default async function NewsPage() {
                     </div>
                     <h3 className="text-lg font-bold text-ink line-clamp-2">{article.title}</h3>
                     <p className="text-sm text-gray-600 line-clamp-3 flex-grow">{article.excerpt}</p>
-                    <div className="text-[#0091DA] text-sm font-semibold hover:underline">
+                    <div className="text-marine-text text-sm font-semibold hover:underline">
                       Baca Selengkapnya →
                     </div>
                   </div>

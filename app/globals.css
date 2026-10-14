@@ -23,6 +23,8 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 199 100% 43%;
+    /* Warna teks marine yang lolos WCAG AA (kontras 4.69:1 di atas putih) */
+    --marine-text: 199 100% 36%;
     --radius: 0.5rem;
   }
 
@@ -55,5 +57,17 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-marine-text {
+    color: hsl(var(--marine-text));
+  }
+  .bg-marine-text {
+    background-color: hsl(var(--marine-text));
+  }
+  .border-marine-text {
+    border-color: hsl(var(--marine-text));
   }
 }

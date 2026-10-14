@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pocari Sweat — Rebuild
 
-## Getting Started
+Website rebuild dari Pocari Sweat Indonesia, dibuat sebagai portfolio personal untuk menunjukkan kemampuan frontend.
 
-First, run the development server:
+**⚠️ Disclaimer:** Ini bukan situs resmi Pocari Sweat / Otsuka Pharmaceutical. Semua merek dagang milik pemiliknya masing-masing. Project ini untuk keperluan portfolio.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[pocari-sweat-rebuild.vercel.app](https://pocari-sweat-rebuild.vercel.app)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework:** Next.js 14 (App Router)
+- **Bahasa:** TypeScript
+- **Styling:** Tailwind CSS v3
+- **UI Components:** shadcn/ui (Radix UI)
+- **Icons:** Lucide React
+- **Animasi:** Framer Motion
+- **Font:** Plus Jakarta Sans (body) + Bricolage Grotesque (display)
+- **Deploy:** Vercel
 
-## Learn More
+## Fitur
 
-To learn more about Next.js, take a look at the following resources:
+- Hero dengan scroll-linked bottle animation
+- Katalog produk (3 varian Pocari Sweat)
+- Detail produk per slug
+- Berita & artikel dengan renderer custom (ContentBlock)
+- Kalkulator hidrasi interaktif
+- Hover tilt effect di kartu produk (desktop only)
+- Responsive mobile-first
+- Aksesibilitas WCAG AA (kontras warna terverifikasi)
+- `prefers-reduced-motion` fallback untuk semua animasi
+- SEO lengkap: OG image dinamis, JSON-LD, sitemap, robots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Struktur Project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+app/
+├── (site)/ # Halaman publik
+│ ├── page.tsx # Beranda
+│ ├── products/ # Katalog + detail
+│ ├── news/ # Berita + detail
+│ ├── about/ # Tentang
+│ └── hydration-calculator/
+├── opengraph-image.tsx # OG image dinamis
+├── sitemap.ts # Sitemap
+└── robots.ts # Robots.txt
 
-## Deploy on Vercel
+src/
+├── components/
+│ ├── blocks/ # Navbar, Footer, HeroBottle, ProductCard, dll
+│ ├── common/ # Container, ProductImage, BottleSilhouette
+│ └── ui/ # shadcn components
+├── data/ # Data hardcode (products, articles, types)
+└── lib/ # Utils & queries
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_archive/ # Kode lama (Sanity) yang diarsipkan

@@ -1,8 +1,10 @@
 ﻿import { Container } from "@/components/common/Container";
 import { Metadata } from "next";
 
+export const runtime = "edge"
+
 export const metadata: Metadata = {
-  title: "Tentang Pocari Sweat - Sejarah & Filosofi Ion",
+  title: "Tentang Kami",
   description: "Pelajari sejarah Pocari Sweat sejak 1980 oleh Otsuka Pharmaceutical, inovasi ion replenishment, dan komitmen kesehatan kami.",
 };
 
