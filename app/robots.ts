@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next"
 
-const BASE_URL = "https://pocari-sweat-rebuild.vercel.app"
+const BASE_URL = "https://pocari-sweat-rebuild.netlify.app"
 
 export default function robots(): MetadataRoute.Robots {
   return {

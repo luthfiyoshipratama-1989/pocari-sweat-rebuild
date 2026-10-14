@@ -11,7 +11,7 @@ import { Footer } from "@/components/blocks/Footer";
 import { DevConsoleFilter } from "@/components/DevConsoleFilter";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pocari-sweat-rebuild.vercel.app"),
+  metadataBase: new URL("https://pocari-sweat-rebuild.netlify.app"),
   title: {
     default: "Pocari Sweat — Keringatmu Berharga",
     template: "%s | Pocari Sweat",

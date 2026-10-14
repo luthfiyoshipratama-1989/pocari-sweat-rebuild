@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { products } from "@/data/products"
 import { articles } from "@/data/articles"
 
-const BASE_URL = "https://pocari-sweat-rebuild.vercel.app"
+const BASE_URL = "https://pocari-sweat-rebuild.netlify.app"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
