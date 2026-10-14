@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 
 const footerLinks = {
   products: [
-    { title: "Pocari Sweat", href: "/products/pocari-sweat" },
-    { title: "Ion Water", href: "/products/ion-water" },
-    { title: "Jelly", href: "/products/jelly" },
+    { title: "Pocari Sweat", href: "/products/pocari-sweat-original" },
+    { title: "Ion Water", href: "/products/pocari-sweat-ion-water" },
+    { title: "Jelly", href: "/products/pocari-sweat-jelly" },
   ],
   company: [
     { title: "Tentang Kami", href: "/about" },
