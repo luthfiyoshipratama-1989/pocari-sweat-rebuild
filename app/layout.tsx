@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s | Pocari Sweat",
     default: "Pocari Sweat — Keringatmu Berharga",
   },
-  description: "Pocari Sweat menjaga keseimbangan ion tubuhmu. Minuman isotonik untukmu yang aktif.",
+  description: "Pocari Sweat menjaga keseimbangan ion tubuhmu.",
 };
 
 export default function RootLayout({
