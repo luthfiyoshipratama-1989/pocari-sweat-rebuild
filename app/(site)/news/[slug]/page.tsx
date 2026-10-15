@@ -1,26 +1,17 @@
-import { Container } from "@/components/common/Container"
-import { ProductImage } from "@/components/common/ProductImage"
-import { getArticleBySlug, getAllArticles } from "@/lib/queries"
-import type { ContentBlock } from "@/data/types"
-import { Metadata } from "next"
-import Link from "next/link"
-import { notFound } from "next/navigation"
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { Container } from "@/components/common/Container";
+import { ProductImage } from "@/components/common/ProductImage";
+import { getArticleBySlug, getAllArticles } from "@/lib/queries";
+import type { ContentBlock } from "@/data/types";
 
-export const runtime = "edge"
-export const dynamicParams = false
+export const runtime = "edge";
+export const dynamicParams = false;
 
-type Props = {
-  params: { slug: string }
-}
-
-export async function generateStaticParams() {
-  const articles = await getAllArticles()
-  return articles.map((article) => ({ slug: article.slug }))
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = await getArticleBySlug(params.slug)
-  if (!article) return { title: "Artikel Tidak Ditemukan" }
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const article = await getArticleBySlug(params.slug);
+  if (!article) return { title: "Artikel Tidak Ditemukan" };
 
   return {
     title: article.title,
@@ -41,91 +32,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/news/${article.slug}`,
     },
-  }
+  };
 }
 
-export default async function NewsDetailPage({ params }: Props) {
-  const article = await getArticleBySlug(params.slug)
-  if (!article) notFound()
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: article.title,
-    description: article.excerpt,
-    datePublished: article.publishedAt,
-    author: {
-      "@type": "Organization",
-      name: "Pocari Sweat",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Pocari Sweat",
-    },
-  };
-
-  return (
-    <div className="bg-white text-ink pt-24 pb-16">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <Container className="max-w-4xl">
-        <Link
-          href="/news"
-          className="inline-flex items-center text-marine-text hover:underline mb-8"
-        >
-          ← Kembali ke Berita
-        </Link>
-
-        <article>
-          <div className="mb-6">
-            <div className="flex items-center gap-3 text-sm text-gray-600 mb-3">
-              <span className="text-xs font-semibold text-marine-text uppercase tracking-wide">
-                {article.category || "Artikel"}
-              </span>
-              <span>•</span>
-              <time dateTime={article.publishedAt}>
-                {new Date(article.publishedAt).toLocaleDateString("id-ID", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
-            </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-ink mb-4">
-              {article.title}
-            </h1>
-            {article.excerpt && (
-              <p className="text-xl text-gray-600 leading-relaxed">
-                {article.excerpt}
-              </p>
-            )}
-          </div>
-
-          <div className="relative w-full h-[400px] mb-10 rounded-xl overflow-hidden">
-            <ProductImage
-              src={article.thumbnail}
-              alt={article.title}
-              variant="article"
-              sizes="(min-width: 1024px) 768px, 100vw"
-              className="w-full h-full"
-            />
-          </div>
-
-          <div className="max-w-none">
-            {article.body && article.body.length > 0 ? (
-              <ContentRenderer blocks={article.body} />
-            ) : (
-              <p className="text-gray-700 leading-relaxed text-lg">
-                {article.excerpt}
-              </p>
-            )}
-          </div>
-        </article>
-      </Container>
-    </div>
-  )
+function calculateReadingTime(body: ContentBlock[]): number {
+  const words = body
+    .map((block) => {
+      if (block.type === "paragraph") return block.text;
+      if (block.type === "heading") return block.text;
+      if (block.type === "list") return block.items.join(" ");
+      return "";
+    })
+    .join(" ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
 }
 
 function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
@@ -134,42 +55,196 @@ function ContentRenderer({ blocks }: { blocks: ContentBlock[] }) {
       {blocks.map((block, i) => {
         if (block.type === "paragraph") {
           return (
-            <p key={i} className="text-gray-700 leading-relaxed text-lg mb-4">
+            <p key={i} className="text-base md:text-lg leading-relaxed text-muted-foreground mb-6">
               {block.text}
             </p>
-          )
+          );
         }
         if (block.type === "heading") {
-          if (block.level === 2) {
-            return (
-              <h2
-                key={i}
-                className="text-2xl font-semibold text-ink mt-10 mb-3"
-              >
-                {block.text}
-              </h2>
-            )
-          }
+          const Tag = block.level === 2 ? "h2" : "h3";
+          const cls =
+            block.level === 2
+              ? "text-2xl md:text-3xl font-semibold tracking-tight mt-12 mb-4"
+              : "text-xl md:text-2xl font-semibold tracking-tight mt-8 mb-3";
           return (
-            <h3 key={i} className="text-xl font-semibold text-ink mt-6 mb-2">
+            <Tag key={i} className={cls}>
               {block.text}
-            </h3>
-          )
+            </Tag>
+          );
         }
         if (block.type === "list") {
           return (
-            <ul
-              key={i}
-              className="list-disc pl-6 mb-4 space-y-2 text-gray-700 text-lg"
-            >
+            <ul key={i} className="list-disc pl-6 space-y-2 mb-6 text-muted-foreground">
               {block.items.map((item, j) => (
                 <li key={j}>{item}</li>
               ))}
             </ul>
-          )
+          );
         }
-        return null
+        return null;
       })}
     </>
-  )
+  );
+}
+
+export default async function NewsDetailPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const article = await getArticleBySlug(params.slug);
+  if (!article) notFound();
+
+  const allArticles = await getAllArticles();
+  const relatedArticles = allArticles.filter((a) => a.slug !== article.slug).slice(0, 2);
+
+  const readingTime = calculateReadingTime(article.body);
+  const publishedDate = new Date(article.publishedAt).toLocaleDateString("id-ID", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.publishedAt,
+    author: {
+      "@type": "Person",
+      name: "Luthfi Yoshi",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Pocari Sweat Rebuild (portfolio)",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <article className="py-12 md:py-16">
+        <Container>
+          <div className="max-w-3xl mx-auto">
+            <Link
+              href="/news"
+              className="text-sm text-muted-foreground hover:text-marine-text mb-8 inline-block"
+            >
+              ← Kembali ke Berita
+            </Link>
+
+            <div className="mb-8">
+              <p className="text-xs text-marine-text font-medium uppercase tracking-wider mb-4">
+                {article.category}
+              </p>
+              <h1 className="text-3xl md:text-5xl font-semibold tracking-tight leading-tight mb-6">
+                {article.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+                <span>Oleh Luthfi Yoshi</span>
+                <span aria-hidden="true">·</span>
+                <time dateTime={article.publishedAt}>{publishedDate}</time>
+                <span aria-hidden="true">·</span>
+                <span>{readingTime} menit baca</span>
+              </div>
+            </div>
+
+            {article.thumbnail ? (
+              <div className="relative w-full h-[300px] md:h-[400px] mb-10 rounded-xl overflow-hidden">
+                <ProductImage
+                  src={article.thumbnail}
+                  alt={article.title}
+                  variant="article"
+                  className="w-full h-full"
+                  sizes="(min-width: 768px) 768px, 100vw"
+                  priority
+                />
+              </div>
+            ) : (
+              <div className="relative w-full h-[200px] md:h-[280px] mb-10 rounded-xl overflow-hidden bg-gradient-to-br from-marine/15 via-sky/10 to-marine/5 flex items-center justify-center">
+                <span className="text-sm font-medium uppercase tracking-widest text-marine-text/70">
+                  Pocari Sweat Rebuild
+                </span>
+              </div>
+            )}
+
+            <div className="prose-content">
+              <ContentRenderer blocks={article.body} />
+            </div>
+
+            <div className="mt-12 pt-8 border-t border-border">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Artikel ini bagian dari proyek portfolio pribadi. Bukan saran
+                medis. Konsultasikan kebutuhan kesehatanmu dengan tenaga
+                profesional.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </article>
+
+      {/* CTA KALKULATOR */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <Container>
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">
+              Butuh tahu berapa cairanmu hari ini?
+            </h2>
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              Hitung estimasi kebutuhanmu berdasarkan berat badan dan durasi
+              aktivitas.
+            </p>
+            <Link
+              href="/hydration-calculator"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-11 px-6 bg-marine hover:bg-marine-dark text-white"
+            >
+              Buka kalkulator →
+            </Link>
+          </div>
+        </Container>
+      </section>
+
+      {/* RELATED ARTICLES */}
+      {relatedArticles.length > 0 && (
+        <section className="py-16 md:py-24">
+          <Container>
+            <div className="max-w-3xl mb-12">
+              <p className="text-sm font-medium uppercase tracking-wider text-marine-text mb-3">
+                Baca juga
+              </p>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                Artikel lain dari seri ini.
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {relatedArticles.map((other) => (
+                <Link
+                  key={other.slug}
+                  href={`/news/${other.slug}`}
+                  className="group border border-border rounded-xl p-6 bg-background hover:border-marine-text transition-colors"
+                >
+                  <p className="text-xs text-marine-text font-medium uppercase tracking-wider mb-3">
+                    {other.category}
+                  </p>
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-marine-text transition-colors">
+                    {other.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2 mb-4">
+                    {other.excerpt}
+                  </p>
+                  <span className="text-sm text-marine-text">Baca →</span>
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </section>
+      )}
+    </>
+  );
 }
