@@ -53,12 +53,12 @@ export const articles: Article[] = [
       },
       {
         type: "paragraph",
-        text: "Kalau kamu hanya minum air putih setelah berkeringat banyak, cairan tubuh memang bertambah, tapi kadar ion justru makin encer. Akibatnya bisa terasa lemas, pusing, atau kram otot meski sudah minum banyak.",
+        text: "Kalau kamu hanya minum air putih setelah berkeringat banyak, cairan tubuh memang bertambah, tapi kadar ion justru makin encer. Kondisi ini bisa membuatmu merasa lemas atau pusing. Kaitannya dengan kram otot masih diperdebatkan di literatur kedokteran olahraga — yang jelas, air putih saja tidak mengembalikan ion yang hilang.",
       },
       { type: "heading", level: 2, text: "Kapan butuh lebih dari air putih" },
       {
         type: "paragraph",
-        text: "Olahraga lebih dari 60 menit, bekerja di luar ruangan saat terik, atau sedang demam dan diare — itu saat-saat tubuh benar-benar kehilangan ion. Minuman isotonik dengan komposisi ion menyerupai cairan tubuh membantu menggantinya lebih cepat daripada air putih.",
+        text: "Olahraga lebih dari 60 menit, bekerja di luar ruangan saat terik, atau sedang demam — itu saat-saat tubuh benar-benar kehilangan ion. Minuman isotonik dengan komposisi ion menyerupai cairan tubuh membantu menggantinya lebih cepat daripada air putih. Khusus untuk diare, WHO menganjurkan oralit (ORS) sebagai penanganan utama, bukan minuman isotonik.",
       },
       {
         type: "paragraph",
