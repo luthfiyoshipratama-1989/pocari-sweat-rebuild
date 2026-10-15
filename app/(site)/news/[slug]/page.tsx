@@ -1,4 +1,4 @@
-﻿import { Container } from "@/components/common/Container"
+import { Container } from "@/components/common/Container"
 import { ProductImage } from "@/components/common/ProductImage"
 import { getArticleBySlug, getAllArticles } from "@/lib/queries"
 import type { ContentBlock } from "@/data/types"
@@ -24,12 +24,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: article.title,
-    description: article.excerpt || "Baca artikel terkini dari Pocari Sweat.",
+    description: article.excerpt || "Artikel dari Pocari Sweat Rebuild.",
     openGraph: {
-      title: article.title,
-      description: article.excerpt,
       type: "article",
+      title: article.title,
+      description: article.excerpt || "",
       publishedTime: article.publishedAt,
+      url: `/news/${article.slug}`,
+      siteName: "Pocari Sweat Rebuild",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt || "",
+    },
+    alternates: {
+      canonical: `/news/${article.slug}`,
     },
   }
 }

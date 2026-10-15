@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import * as React from "react";
 import Link from "next/link";
@@ -19,7 +19,7 @@ const socialLinks = [
   { title: "Instagram", href: "https://instagram.com/pocarisweat_id" },
   { title: "Facebook", href: "https://facebook.com/PocariSweatID" },
   { title: "YouTube", href: "https://youtube.com/@pocarisweat" },
-  { title: "Twitter", href: "https://twitter.com/pocarisweat" },
+  { title: "X", href: "https://x.com/pocarisweat" },
 ];
 
 export function Footer() {
@@ -41,7 +41,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="text-sm font-medium mb-4">Products</h3>
+            <h3 className="text-sm font-medium mb-4">Produk</h3>
             <ul className="space-y-3">
               {footerLinks.products.map((link) => (
                 <li key={link.href}>
@@ -57,7 +57,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="text-sm font-medium mb-4">Company</h3>
+            <h3 className="text-sm font-medium mb-4">Tentang</h3>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
@@ -73,7 +73,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="text-sm font-medium mb-4">Social</h3>
+            <h3 className="text-sm font-medium mb-4">Sosial</h3>
             <ul className="space-y-3">
               {socialLinks.map((link) => (
                 <li key={link.href}>
@@ -91,13 +91,21 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Pocari Sweat. Rebuild untuk portfolio
-            personal.
+        <div className="mt-12 pt-8 border-t border-border">
+          <p className="text-sm text-foreground">
+            Proyek portfolio oleh <strong>Luthfi Yoshi</strong>
           </p>
-          <p className="text-xs text-muted-foreground">
-            Dibuat dengan Next.js &amp; Tailwind CSS
+          <p className="text-xs text-muted-foreground mt-2">
+            <a href="https://github.com/USERNAME" className="underline hover:text-foreground">GitHub</a>
+            {" \u00b7 "}
+            <a href="https://linkedin.com/in/USERNAME" className="underline hover:text-foreground">LinkedIn</a>
+            {" \u00b7 "}
+            <a href="mailto:email@kamu.com" className="underline hover:text-foreground">Email</a>
+          </p>
+          <p className="text-xs text-muted-foreground mt-4 max-w-xl leading-relaxed">
+            Situs ini bukan situs resmi Pocari Sweat. Tidak berafiliasi dengan
+            Otsuka Pharmaceutical atau PT Amerta Indah Otsuka. Dibuat untuk
+            keperluan portfolio personal.
           </p>
         </div>
       </div>

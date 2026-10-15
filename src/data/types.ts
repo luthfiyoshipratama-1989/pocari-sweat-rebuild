@@ -3,15 +3,30 @@ export type ContentBlock =
   | { type: "heading"; level: 2 | 3; text: string }
   | { type: "list"; items: string[] }
 
+export type IonComposition = {
+  symbol: string
+  name: string
+  amount: string
+}
+
+export type Situation = {
+  title: string
+  description: string
+}
+
 export type Product = {
   _id: string
   slug: string
   name: string
   category: "pocari-sweat" | "ion-water" | "jelly"
   description: string
+  tagline: string
   image: string | null
   variants: string[]
   nutrition: string
+  ionComposition: IonComposition[]
+  situations: Situation[]
+  bestFor: string
 }
 
 export type Article = {

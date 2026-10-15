@@ -1,8 +1,7 @@
-﻿"use client";
+"use client";
 
 import * as React from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon";
 import {
@@ -88,7 +87,7 @@ export function Header() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent">
-                  Products
+                  Produk
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-2 p-4">
@@ -117,7 +116,7 @@ export function Header() {
 
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent">
-                  About
+                  Tentang
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-2 p-4">
@@ -157,14 +156,14 @@ export function Header() {
         </div>
 
         <div className="hidden md:flex items-center gap-2">
-          <Button
-            asChild
-            className="bg-marine hover:bg-marine-dark text-white"
+          <Link
+            href="https://pocarisweat.id"
+            target="_blank"
+            rel="noopener"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            <Link href="https://pocarisweat.id" target="_blank" rel="noopener">
-              Beli Sekarang
-            </Link>
-          </Button>
+            Situs resmi ↗
+          </Link>
         </div>
 
         <button
@@ -214,7 +213,7 @@ function MobileMenu({
     >
       <div className="flex flex-col p-4 gap-1">
         <div className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          Products
+          Produk
         </div>
         {productLinks.map((item) => (
           <Link
@@ -228,7 +227,7 @@ function MobileMenu({
         ))}
 
         <div className="px-3 py-2 mt-4 text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          About
+          Tentang
         </div>
         {aboutLinks.map((item) => (
           <Link
@@ -252,19 +251,15 @@ function MobileMenu({
         </div>
 
         <div className="mt-6">
-          <Button
-            asChild
-            className="w-full bg-marine hover:bg-marine-dark text-white"
+          <Link
+            href="https://pocarisweat.id"
+            target="_blank"
+            rel="noopener"
+            onClick={() => setOpen(false)}
+            className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            <Link
-              href="https://pocarisweat.id"
-              target="_blank"
-              rel="noopener"
-              onClick={() => setOpen(false)}
-            >
-              Beli Sekarang
-            </Link>
-          </Button>
+            Situs resmi ↗
+          </Link>
         </div>
       </div>
     </div>
