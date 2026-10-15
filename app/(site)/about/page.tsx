@@ -1,91 +1,219 @@
-﻿import { Container } from "@/components/common/Container";
-import { Metadata } from "next";
-
-export const runtime = "edge"
+import Link from "next/link";
+import type { Metadata } from "next";
+import { Container } from "@/components/common/Container";
 
 export const metadata: Metadata = {
-  title: "Tentang Kami",
-  description: "Pelajari sejarah Pocari Sweat sejak 1980 oleh Otsuka Pharmaceutical, inovasi ion replenishment, dan komitmen kesehatan kami.",
+  title: "Tentang Proyek",
+  description:
+    "Rebuild portfolio dari situs Pocari Sweat. Proyek pribadi, tidak berafiliasi dengan Otsuka Pharmaceutical.",
+  openGraph: {
+    title: "Tentang Proyek",
+    description:
+      "Rebuild portfolio dari situs Pocari Sweat. Proyek pribadi, tidak berafiliasi dengan Otsuka.",
+    url: "/about",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tentang Proyek",
+    description:
+      "Rebuild portfolio dari situs Pocari Sweat. Proyek pribadi, tidak berafiliasi dengan Otsuka.",
+  },
+  alternates: {
+    canonical: "/about",
+  },
 };
 
+export const runtime = "edge";
+
 export default function AboutPage() {
-  const milestones = [
-    { year: "1980", title: "Kelahiran di Jepang", desc: "Otsuka Pharmaceutical meluncurkan Pocari Sweat, minuman ion tubuh pertama yang terinspirasi dari cairan medis IV." },
-    { year: "1990", title: "Ekspansi Global", desc: "Pocari Sweat merambah pasar Asia, membawa standar baru hidrasi sehat untuk iklim tropis." },
-    { year: "2000", title: "Masuk Indonesia", desc: "Hadir di Indonesia untuk mendampingi gaya hidup aktif masyarakat dengan riset ion yang mendalam." },
-    { year: "2010", title: "Edukasi Keseimbangan Tubuh", desc: "Kampanye masif tentang pentingnya menjaga ion tubuh saat beraktivitas fisik dan olahraga." },
-    { year: "2020", title: "Inovasi Berkelanjutan", desc: "Komitmen pada botol ramah lingkungan dan gerakan Sweat Safe untuk generasi muda yang lebih sehat." },
-  ];
-
-  const values = [
-    { title: "Health", desc: "Menjaga keseimbangan cairan dan ion esensial tubuh agar fungsi vital tetap optimal sepanjang hari." },
-    { title: "Science", desc: "Berakar dari riset farmasi mendalam tentang komposisi elektrolit yang menyerupai cairan tubuh." },
-    { title: "Youth Energy", desc: "Mendukung jiwa muda yang aktif bergerak, berani berekspresi, dan melampaui batas." },
-  ];
-
   return (
-    <div className="bg-white text-ink pt-24 pb-16">
-      {/* Hero */}
-      <section className="bg-[#0091DA] text-white py-20 mb-16">
+    <>
+      {/* HERO */}
+      <section className="py-16 md:py-24 border-b border-border">
         <Container>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Tentang Pocari Sweat</h1>
-          <p className="text-lg md:text-xl text-sky-100 max-w-2xl">
-            Minuman ion tubuh yang mengembalikan kesegaran dan cairan tubuh secara cepat dan tepat.
-          </p>
-        </Container>
-      </section>
-
-      {/* Brand Story */}
-      <Container className="mb-20">
-        <div className="max-w-3xl mx-auto space-y-6 text-gray-700 leading-relaxed text-lg">
-          <h2 className="text-2xl md:text-3xl font-bold text-ink mb-6">Filosofi Ion & Kehdiran Kami</h2>
-          <p>
-            Pocari Sweat pertama kali dikembangkan pada tahun 1980 di Jepang oleh Otsuka Pharmaceutical. Ide dasarnya bermula dari kebutuhan medis akan cairan infus yang dapat diserap tubuh secara cepat dan efisien. Para peneliti kemudian menerapkannya dalam bentuk minuman sehari-hari yang aman dan menyegarkan.
-          </p>
-          <p>
-            Terinspirasi dari komposisi cairan tubuh manusia yang terdiri dari air dan elektrolit esensial, Pocari Sweat dirancang memiliki kemiripan dengan cairan tubuh. Formula ini memastikan setiap tegukan tidak hanya menghilangkan rasa haus, tetapi juga mengembalikan ion yang hilang melalui keringat secara ideal.
-          </p>
-          <p>
-            Di Indonesia, Pocari Sweat terus konsisten mengedukasi masyarakat tentang pentingnya hidrasi yang tepat. Melalui riset yang ketat dan standar kualitas farmasi, kami hadir untuk mendukung setiap individu dalam menjalani hidup yang aktif, sehat, dan bugar.
-          </p>
-        </div>
-      </Container>
-
-      {/* Values Section */}
-      <section className="bg-gray-50 py-16 mb-20">
-        <Container>
-          <h2 className="text-2xl md:text-3xl font-bold text-ink text-center mb-12">Nilai Inti Kami</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {values.map((v, i) => (
-              <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                <div className="w-12 h-12 bg-[#0091DA]/10 text-[#0091DA] rounded-lg flex items-center justify-center font-bold text-xl mb-4">
-                  0{i + 1}
-                </div>
-                <h3 className="text-xl font-bold text-ink mb-2">{v.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{v.desc}</p>
-              </div>
-            ))}
+          <div className="max-w-3xl">
+            <p className="text-sm font-medium uppercase tracking-wider text-marine-text mb-4">
+              Tentang proyek
+            </p>
+            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mb-6">
+              Kenapa saya rebuild situs ini.
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              Bukan untuk dijual, bukan untuk brand. Cuma latihan desain dan
+              frontend, dengan satu pertanyaan: kalau situs minuman isotonik
+              dibuat serius, sekuat apa ia bisa bekerja?
+            </p>
           </div>
         </Container>
       </section>
 
-      {/* Timeline Section */}
-      <Container>
-        <h2 className="text-2xl md:text-3xl font-bold text-ink text-center mb-12">Perjalanan Kami</h2>
-        <div className="max-w-3xl mx-auto space-y-8 relative before:absolute before:inset-0 before:left-7 before:w-0.5 before:bg-gray-200">
-          {milestones.map((m, i) => (
-            <div key={i} className="relative flex items-start gap-6 group">
-              <div className="w-14 h-14 rounded-full bg-[#0091DA] text-white flex items-center justify-center font-bold shrink-0 z-10 shadow-md">
-                {m.year}
+      {/* CERITA ASAL */}
+      <section className="py-16 md:py-24">
+        <Container>
+          <div className="max-w-3xl">
+            <p className="text-sm font-medium uppercase tracking-wider text-marine-text mb-4">
+              Cerita asal
+            </p>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8">
+              Cairan infus yang diminum.
+            </h2>
+            <div className="space-y-5 text-muted-foreground leading-relaxed">
+              <p>
+                Pada 1980, seorang karyawan Otsuka Pharmaceutical mengamati
+                dokter bedah yang kelelahan setelah operasi panjang. Solusi
+                yang ada saat itu cuma dua: air putih, atau infus. Yang
+                pertama kurang, yang kedua terlalu repot.
+              </p>
+              <p>
+                Pertanyaannya sederhana: bisakah cairan infus dibuat cukup
+                enak untuk diminum? Jawabannya jadi Pocari Sweat — minuman
+                dengan komposisi ion yang menyamai cairan tubuh, sehingga
+                lebih cepat diserap dibanding air biasa.
+              </p>
+              <p className="text-foreground font-medium">
+                Saya bukan Otsuka. Proyek ini rebuild portfolio — saya bukan
+                bagian dari perusahaan, dan tidak mewakili mereka.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* PRINSIP DESAIN */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <Container>
+          <div className="max-w-3xl mb-12">
+            <p className="text-sm font-medium uppercase tracking-wider text-marine-text mb-4">
+              Prinsip
+            </p>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
+              Tiga hal yang saya pegang di proyek ini.
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <p className="text-xs font-mono text-marine-text mb-3">01</p>
+              <h3 className="text-lg font-semibold mb-3">
+                Fakta, bukan klaim.
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Setiap angka dan komposisi di situs ini diberi label
+                ilustratif. Tidak ada satu klaim kesehatan pun yang bisa
+                dianggap sebagai saran medis.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-xs font-mono text-marine-text mb-3">02</p>
+              <h3 className="text-lg font-semibold mb-3">
+                Situasi, bukan superlatif.
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                "Terbaik" dan "nomor satu" tidak berarti apa-apa. Yang saya
+                kejar: copy yang menyebut situasi spesifik — habis lari,
+                KRL berdesakan, tangan penuh.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-xs font-mono text-marine-text mb-3">03</p>
+              <h3 className="text-lg font-semibold mb-3">
+                Batas yang jelas.
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Logo, nama, dan identitas Pocari Sweat milik Otsuka.
+                Yang saya buat cuma kode dan desain. Konten fiktif ditandai
+                sebagai fiktif.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* TIMELINE */}
+      <section className="py-16 md:py-24">
+        <Container>
+          <div className="max-w-3xl mb-12">
+            <p className="text-sm font-medium uppercase tracking-wider text-marine-text mb-4">
+              Linimasa ilustratif
+            </p>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+              Tonggak yang saya ketahui.
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Hanya 1980 yang dapat saya rujuk dari sumber publik. Sisanya
+              dihilangkan.
+            </p>
+          </div>
+
+          <div className="max-w-3xl space-y-8">
+            <div className="flex gap-6">
+              <div className="font-mono text-sm text-marine-text w-16 shrink-0 pt-1">
+                1980
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex-1">
-                <h3 className="text-lg font-bold text-ink mb-1">{m.title}</h3>
-                <p className="text-gray-600">{m.desc}</p>
+              <div className="border-l-2 border-marine pl-6 pb-2">
+                <h3 className="font-semibold mb-2">
+                  Pocari Sweat pertama diproduksi
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Otsuka Pharmaceutical merilis Pocari Sweat di Jepang,
+                  berdasarkan gagasan cairan infus yang bisa diminum.
+                </p>
               </div>
             </div>
-          ))}
-        </div>
-      </Container>
-    </div>
+          </div>
+
+          <div className="max-w-3xl mt-8">
+            <p className="text-xs text-muted-foreground italic">
+              Catatan: entri lain (masuk Indonesia, ekspansi, dsb.) tidak
+              saya sertakan karena tidak punya sumber publik yang bisa
+              diverifikasi untuk proyek portfolio ini.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <Container>
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">
+              Mau lihat bagian yang paling saya kerjakan?
+            </h2>
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              Kalkulator hidrasi dan halaman detail produk adalah dua bagian
+              dengan effort desain paling banyak.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link
+                href="/hydration-calculator"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-11 px-6 bg-marine hover:bg-marine-dark text-white"
+              >
+                Buka kalkulator →
+              </Link>
+              <Link
+                href="/products"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-11 px-6 border border-border hover:bg-accent"
+              >
+                Lihat produk
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* DISCLAIMER */}
+      <section className="pb-16 md:pb-24">
+        <Container>
+          <p className="text-xs text-muted-foreground max-w-2xl mx-auto text-center leading-relaxed">
+            Halaman ini bagian dari proyek portfolio pribadi. Tidak
+            berafiliasi dengan Otsuka Pharmaceutical atau PT Amerta Indah
+            Otsuka. Nama dan logo Pocari Sweat milik pemegang merek
+            masing-masing.
+          </p>
+        </Container>
+      </section>
+    </>
   );
 }
