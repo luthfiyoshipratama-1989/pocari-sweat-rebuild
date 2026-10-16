@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
 import { Container } from "@/components/common/Container";
 import { ProductImage } from "@/components/common/ProductImage";
 import { getArticleBySlug, getAllArticles } from "@/lib/queries";

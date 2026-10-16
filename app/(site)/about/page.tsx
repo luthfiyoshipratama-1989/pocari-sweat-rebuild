@@ -110,7 +110,7 @@ export default function AboutPage() {
                 Situasi, bukan superlatif.
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                "Terbaik" dan "nomor satu" tidak berarti apa-apa. Yang saya
+                &quot;Terbaik&quot; dan &quot;nomor satu&quot; tidak berarti apa-apa. Yang saya
                 kejar: copy yang menyebut situasi spesifik — habis lari,
                 KRL berdesakan, tangan penuh.
               </p>
