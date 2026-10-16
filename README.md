@@ -17,7 +17,7 @@ Website rebuild dari Pocari Sweat Indonesia, dibuat sebagai portfolio personal u
 - **Icons:** Lucide React
 - **Animasi:** Framer Motion
 - **Font:** Plus Jakarta Sans (body) + Bricolage Grotesque (display)
-- **Deploy:** Vercel
+- **Deploy:** Cloudflare Pages
 
 ## Fitur
 

@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 
 const footerLinks = {
@@ -96,11 +95,11 @@ export function Footer() {
             Proyek portfolio oleh <strong>Luthfi Yoshi</strong>
           </p>
           <p className="text-xs text-muted-foreground mt-2">
-            <a href="https://github.com/USERNAME" className="underline hover:text-foreground">GitHub</a>
-            {" \u00b7 "}
-            <a href="https://linkedin.com/in/USERNAME" className="underline hover:text-foreground">LinkedIn</a>
-            {" \u00b7 "}
-            <a href="mailto:email@kamu.com" className="underline hover:text-foreground">Email</a>
+            <a href="https://github.com/luthfiyoshipratama-1989" className="underline hover:text-foreground">GitHub</a>
+            {" · "}
+            <a href="https://wa.me/62895411963867" className="underline hover:text-foreground">WhatsApp</a>
+            {" · "}
+            <a href="mailto:luthfiyoshi1601@gmail.com" className="underline hover:text-foreground">Email</a>
           </p>
           <p className="text-xs text-muted-foreground mt-4 max-w-xl leading-relaxed">
             Situs ini bukan situs resmi Pocari Sweat. Tidak berafiliasi dengan
