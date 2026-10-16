@@ -84,12 +84,12 @@ export default async function HomePage() {
         </p>
       </div>
 
-      <div className="relative hidden md:flex md:col-span-5 lg:col-span-6 items-center justify-center">
+      <div className="relative flex md:col-span-5 lg:col-span-6 items-center justify-center order-first md:order-last">
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15),transparent_60%)]"
         />
-        <div className="relative h-[220px] w-full max-w-[420px] md:h-[420px] lg:h-[520px]">
+        <div className="relative h-[180px] w-full max-w-[180px] md:h-[420px] md:max-w-[420px] lg:h-[520px]">
           <HeroBottle />
         </div>
       </div>
