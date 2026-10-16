@@ -51,32 +51,8 @@ const aboutLinks: LinkItem[] = [
 ];
 
 export function Header() {
-  const [open, setOpen] = React.useState(false);
-  const scrolled = useScroll(10);
-
-   React.useEffect(() => {
-    if (!open) return;
-
-    const scrollY = window.scrollY;
-    const body = document.body;
-
-    body.style.position = "fixed";
-    body.style.top = `-${scrollY}px`;
-    body.style.left = "0";
-    body.style.right = "0";
-    body.style.width = "100%";
-    body.style.overflow = "hidden";
-
-    return () => {
-      body.style.position = "";
-      body.style.top = "";
-      body.style.left = "";
-      body.style.right = "";
-      body.style.width = "";
-      body.style.overflow = "";
-      window.scrollTo(0, scrollY);
-    };
-  }, [open]);
+   const [open, setOpen] = React.useState(false);
+   const scrolled = useScroll(80);
   
   return (
     <header
@@ -222,7 +198,7 @@ function MobileMenu({
   return (
     <div
       id="mobile-menu"
-      className="md:hidden fixed top-14 left-0 right-0 bottom-0 z-40 bg-background border-t border-border overflow-y-auto"
+      className="md:hidden fixed inset-0 z-40 bg-background overflow-y-auto overscroll-contain pt-14"
     >
       <div className="flex flex-col p-4 gap-1">
         <div className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
