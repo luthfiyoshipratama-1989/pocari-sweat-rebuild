@@ -198,9 +198,19 @@ function MobileMenu({
   return (
     <div
       id="mobile-menu"
-      className="md:hidden fixed inset-0 z-40 bg-background overflow-y-auto overscroll-contain pt-14"
+      className="md:hidden fixed inset-0 z-[60] bg-background overflow-y-auto overscroll-contain"
     >
       <div className="flex flex-col p-4 gap-1">
+        <button
+          onClick={() => setOpen(false)}
+          className="self-end inline-flex items-center justify-center rounded-md p-2 hover:bg-accent transition-colors mb-2"
+          aria-label="Tutup menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
         <div className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
           Produk
         </div>
