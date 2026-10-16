@@ -57,7 +57,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b border-transparent transition-colors",
+        "sticky top-0 z-50 w-full bg-background border-b border-transparent transition-colors",
         {
           "bg-background/95 supports-[backdrop-filter]:bg-background/80 border-border backdrop-blur-lg":
             scrolled,
@@ -200,10 +200,10 @@ function MobileMenu({
       id="mobile-menu"
       className="md:hidden fixed inset-0 z-[60] bg-background overflow-y-auto overscroll-contain"
     >
-      <div className="flex flex-col p-4 gap-1">
+      <div className="relative flex flex-col p-4 gap-1 pt-16">
         <button
           onClick={() => setOpen(false)}
-          className="self-end inline-flex items-center justify-center rounded-md p-2 hover:bg-accent transition-colors mb-2"
+          className="absolute top-4 right-4 z-20 inline-flex items-center justify-center rounded-md p-2 hover:bg-accent transition-colors text-foreground"
           aria-label="Tutup menu"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
