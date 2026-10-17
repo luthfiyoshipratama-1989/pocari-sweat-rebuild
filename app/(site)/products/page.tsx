@@ -37,7 +37,7 @@ export default async function ProductsPage() {
                 <ProductImage
                   src={p.image}
                   alt={p.name}
-                  className="aspect-square bg-muted rounded-xl mb-4 overflow-hidden"
+                  className="aspect-[4/5] bg-muted/20 flex items-center justify-center p-6 rounded-xl mb-4 overflow-hidden"
                 />
                 <p className="text-xs text-marine-text font-medium uppercase tracking-wider mb-1">
                   {p.category?.replace("-", " ")}
