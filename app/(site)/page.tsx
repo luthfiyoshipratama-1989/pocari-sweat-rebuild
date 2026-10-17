@@ -116,18 +116,23 @@ export default async function HomePage() {
 
     <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-12">
       {[
-        { sym: "Na⁺", name: "Natrium" },
-        { sym: "K⁺", name: "Kalium" },
-        { sym: "Ca²⁺", name: "Kalsium" },
-        { sym: "Mg²⁺", name: "Magnesium" },
-        { sym: "Cl⁻", name: "Klorida" },
+        { sym: "Na⁺", name: "Natrium", mg: "49" },
+        { sym: "K⁺", name: "Kalium", mg: "20" },
+        { sym: "Ca²⁺", name: "Kalsium", mg: "2" },
+        { sym: "Mg²⁺", name: "Magnesium", mg: "0.6" },
+        { sym: "Cl⁻", name: "Klorida", mg: "60" },
       ].map((ion) => (
         <div
           key={ion.sym}
-          className="border border-border rounded-lg p-4 bg-background"
+          className={`border border-border rounded-lg p-4 bg-background ${
+            ion.sym === "Cl⁻" ? "col-span-2 md:col-span-1" : ""
+          }`}
         >
           <div className="font-display text-2xl font-bold text-marine mb-1">
             {ion.sym}
+          </div>
+          <div className="text-xs font-mono text-muted-foreground">
+            {ion.mg} mg
           </div>
           <div className="text-xs text-muted-foreground">{ion.name}</div>
         </div>
