@@ -14,8 +14,8 @@ export function IdentityStrip() {
           rel="noopener noreferrer"
           className="shrink-0 hover:text-white/80 transition-colors font-medium flex items-center gap-1"
         >
-          <span className="hidden xs:inline">Ajak kerja sama</span>
-          <span className="xs:hidden">Kontak</span>
+          <span className="hidden sm:inline">Ajak kerja sama</span>
+          <span className="sm:hidden">Kontak</span>
           <span aria-hidden="true">→</span>
         </a>
       </div>
