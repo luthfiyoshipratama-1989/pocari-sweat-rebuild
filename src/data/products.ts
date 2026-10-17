@@ -85,7 +85,7 @@ export const products: Product[] = [
     name: "Pocari Sweat Jelly",
     category: "jelly",
     description:
-      "Ion Pocari Sweat dalam bentuk jelly lembut yang bisa langsung ditelan. Untuk situasi saat tanganmu tidak bisa memegang botol — lari, angkat beban, atau di kereta yang penuh.",
+      "Ion Pocari Sweat dalam bentuk jelly lembut yang bisa langsung ditelan. Cocok untuk situasi saat tanganmu tidak bisa memegang botol, misalnya ketika lari, angkat beban, atau naik kereta yang penuh.",
     tagline:
       "Ion dalam bentuk jelly. Untuk tangan yang tidak bisa memegang botol.",
     image: null,

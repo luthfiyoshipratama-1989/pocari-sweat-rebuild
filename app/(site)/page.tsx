@@ -10,7 +10,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Ganti ion yang ikut keluar bersama keringat",
-  description: "Natrium, kalium, kalsium, magnesium, klorida — lima ion ikut terbuang tiap kali berkeringat. Hitung kebutuhanmu dengan kalkulator hidrasi.",
+  description: "Saat berkeringat banyak, tubuh kehilangan lima ion penting: natrium, kalium, kalsium, magnesium, dan klorida. Hitung kebutuhanmu dengan kalkulator hidrasi.",
   openGraph: {
     title: "Ganti ion yang ikut keluar bersama keringat",
     description: "Lima ion ikut terbuang tiap kali berkeringat. Hitung kebutuhanmu.",
@@ -60,8 +60,8 @@ export default async function HomePage() {
         </h1>
 
         <p className="text-base md:text-lg text-white/85 max-w-lg mb-10 leading-relaxed">
-          Natrium, kalium, kalsium, magnesium, klorida — lima ion ikut
-          terbuang tiap kali kamu berkeringat banyak.
+          Saat berkeringat banyak, tubuhmu kehilangan lima ion penting:
+          natrium, kalium, kalsium, magnesium, dan klorida.
         </p>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -108,9 +108,9 @@ export default async function HomePage() {
         Lima ion, satu keseimbangan.
       </h2>
       <p className="text-muted-foreground leading-relaxed">
-        Setiap kali berkeringat, tubuh kehilangan cairan dan elektrolit.
-        Pocari Sweat menyamai komposisi ion cairan tubuh sehingga lebih cepat
-        diserap dibanding air putih setelah aktivitas berat.
+        Berkeringat berarti kehilangan cairan dan elektrolit. Komposisi ion
+        Pocari Sweat dibuat menyerupai cairan tubuh, sehingga lebih cepat
+        diserap dibanding air putih biasa.
       </p>
     </div>
 
@@ -146,8 +146,8 @@ export default async function HomePage() {
         <Container>
           <div className="flex items-end justify-between mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Tiga situasi, tiga cara ganti ion.</h2>
-              <p className="text-muted-foreground mt-2">Habis lari. Hari biasa. Tangan penuh.</p>
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Cara mengganti ion sesuai aktivitasmu.</h2>
+              <p className="text-muted-foreground mt-2">Tiga situasi berbeda: setelah lari, saat hari biasa, atau ketika tangan sedang penuh.</p>
             </div>
             <Link href="/products" className="text-sm text-marine-text hover:underline hidden md:block">
               Lihat semua →

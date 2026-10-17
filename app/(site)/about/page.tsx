@@ -39,9 +39,9 @@ export default function AboutPage() {
               Kenapa saya rebuild situs ini.
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Bukan untuk dijual, bukan untuk brand. Cuma latihan desain dan
-              frontend, dengan satu pertanyaan: kalau situs minuman isotonik
-              dibuat serius, sekuat apa ia bisa bekerja?
+              Saya membuat ulang situs ini murni untuk latihan desain dan
+              frontend. Pertanyaannya sederhana: seberapa serius sebuah situs
+              minuman isotonik bisa dikerjakan?
             </p>
           </div>
         </Container>
@@ -66,12 +66,12 @@ export default function AboutPage() {
               </p>
               <p>
                 Pertanyaannya sederhana: bisakah cairan infus dibuat cukup
-                enak untuk diminum? Jawabannya jadi Pocari Sweat — minuman
-                dengan komposisi ion yang menyamai cairan tubuh, sehingga
+                enak untuk diminum? Jawabannya jadi Pocari Sweat, minuman
+                dengan komposisi ion yang menyamai cairan tubuh sehingga
                 lebih cepat diserap dibanding air biasa.
               </p>
               <p className="text-foreground font-medium">
-                Saya bukan Otsuka. Proyek ini rebuild portfolio — saya bukan
+                Saya bukan Otsuka. Proyek ini rebuild portfolio. Saya bukan
                 bagian dari perusahaan, dan tidak mewakili mereka.
               </p>
             </div>
@@ -111,8 +111,8 @@ export default function AboutPage() {
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 &quot;Terbaik&quot; dan &quot;nomor satu&quot; tidak berarti apa-apa. Yang saya
-                kejar: copy yang menyebut situasi spesifik — habis lari,
-                KRL berdesakan, tangan penuh.
+                kejar: copy yang menyebut situasi spesifik, seperti habis
+                lari, KRL berdesakan, atau tangan penuh.
               </p>
             </div>
 
