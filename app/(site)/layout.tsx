@@ -8,6 +8,7 @@ import "@fontsource/plus-jakarta-sans/600.css";
 import "../globals.css";
 import { Header } from "@/components/blocks/Navbar";
 import { Footer } from "@/components/blocks/Footer";
+import { IdentityStrip } from "@/components/blocks/IdentityStrip";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pocari-sweat-rebuild.netlify.app"),
@@ -40,6 +41,7 @@ export default function SiteLayout({
 }) {
   return (
     <>
+      <IdentityStrip />
       <Header />
       <main>{children}</main>
       <Footer />
