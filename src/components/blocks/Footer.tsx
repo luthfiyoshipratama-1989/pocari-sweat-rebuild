@@ -15,10 +15,7 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { title: "Instagram", href: "https://instagram.com/pocarisweat_id" },
-  { title: "Facebook", href: "https://facebook.com/PocariSweatID" },
-  { title: "YouTube", href: "https://youtube.com/@pocarisweat" },
-  { title: "X", href: "https://x.com/pocarisweat" },
+  { title: "Instagram", href: "https://instagram.com/firstoflukas_" },
 ];
 
 export function Footer() {

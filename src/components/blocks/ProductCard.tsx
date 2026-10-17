@@ -10,6 +10,7 @@ import {
   useReducedMotion,
 } from "framer-motion"
 import { ProductImage } from "@/components/common/ProductImage"
+import { BottleSilhouette, bottleVariantForSlug } from "@/components/common/BottleSilhouette"
 import type { Product } from "@/data/types"
 
 const MAX_TILT = 6
@@ -69,11 +70,23 @@ export function ProductCard({ product }: { product: Product }) {
         animate={!reduceMotion && hovered ? { y: -4 } : { y: 0 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
       >
-        <ProductImage
-          src={product.image}
-          alt={product.name}
-          className="aspect-[4/5] bg-muted/20 flex items-center justify-center p-6 rounded-xl mb-4 overflow-hidden"
-        />
+        {product.image ? (
+          <ProductImage
+            src={product.image}
+            alt={product.name}
+            className="aspect-[4/5] bg-muted/20 flex items-center justify-center p-6 rounded-xl mb-4 overflow-hidden"
+          />
+        ) : (
+          <div
+            className="aspect-[4/5] bg-muted/20 flex items-center justify-center p-6 rounded-xl mb-4 overflow-hidden bg-gradient-to-b from-sky/20 to-marine/5"
+            aria-hidden="true"
+          >
+            <BottleSilhouette
+              variant={bottleVariantForSlug(product.slug)}
+              className="h-3/4 text-marine-text"
+            />
+          </div>
+        )}
         <h3 className="font-medium group-hover:text-marine-text transition-colors">
           {product.name}
         </h3>

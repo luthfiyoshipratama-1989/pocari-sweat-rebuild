@@ -22,7 +22,7 @@ export function HeroBottle() {
   if (reduceMotion) {
     return (
       <div className="relative h-full w-full flex items-center justify-center">
-        <BottleSilhouette className="h-full w-auto mx-auto text-white/95" />
+        <BottleSilhouette monochrome className="h-full w-auto mx-auto text-white/95" />
         <div
           className="pointer-events-none absolute bottom-0 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-white/20 blur-3xl"
           aria-hidden="true"
@@ -36,7 +36,7 @@ export function HeroBottle() {
       style={{ y, rotate }}
       className="relative h-full w-full flex items-center justify-center"
     >
-      <BottleSilhouette className="h-full w-auto mx-auto text-white/95" />
+      <BottleSilhouette monochrome className="h-full w-auto mx-auto text-white/95" />
       <div
         className="pointer-events-none absolute bottom-0 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-white/20 blur-3xl"
         aria-hidden="true"
