@@ -36,13 +36,23 @@ export default async function NewsPage() {
               <Link key={article._id} href={`/news/${article.slug}`}>
                 <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full cursor-pointer border border-gray-100">
                   {/* Thumbnail */}
-                  <ProductImage
-                    src={article.thumbnail}
-                    alt={article.title}
-                    variant="article"
-                    sizes="(min-width: 768px) 33vw, 100vw"
-                    className="relative w-full h-48"
-                  />
+                  {article.thumbnail ? (
+                    <ProductImage
+                      src={article.thumbnail}
+                      alt={article.title}
+                      variant="article"
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="relative w-full h-48"
+                    />
+                  ) : (
+                    <div className="relative w-full h-48 overflow-hidden">
+                      <div className="w-full h-full bg-marine flex items-center justify-center p-6 text-center">
+                        <span className="font-display text-white font-bold text-2xl leading-tight line-clamp-3">
+                          {article.title}
+                        </span>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Content */}
                   <div className="p-6 flex flex-col gap-3">

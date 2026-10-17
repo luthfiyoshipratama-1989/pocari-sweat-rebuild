@@ -72,7 +72,7 @@ export function ProductCard({ product }: { product: Product }) {
         <ProductImage
           src={product.image}
           alt={product.name}
-          className="aspect-square bg-white rounded-xl mb-4 overflow-hidden"
+          className="aspect-[4/5] bg-muted/20 flex items-center justify-center p-6 rounded-xl mb-4 overflow-hidden"
         />
         <h3 className="font-medium group-hover:text-marine-text transition-colors">
           {product.name}

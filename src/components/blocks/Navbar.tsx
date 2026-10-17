@@ -144,17 +144,6 @@ export function Header() {
           </NavigationMenu>
         </div>
 
-        <div className="hidden md:flex items-center gap-2">
-          <Link
-            href="https://pocarisweat.id"
-            target="_blank"
-            rel="noopener"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Situs resmi ↗
-          </Link>
-        </div>
-
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-accent transition-colors"
@@ -255,7 +244,7 @@ function MobileMenu({
             target="_blank"
             rel="noopener"
             onClick={() => setOpen(false)}
-            className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="block px-3 py-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
             Situs resmi ↗
           </Link>
