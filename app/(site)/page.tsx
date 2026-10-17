@@ -51,7 +51,7 @@ export default async function HomePage() {
   <Container>
     <div className="relative grid grid-cols-1 gap-10 py-20 md:grid-cols-12 md:gap-8 md:py-28 lg:py-32 items-center">
       <div className="md:col-span-7 lg:col-span-6">
-        <p className="text-base md:text-lg font-medium text-white/80 mb-4">
+        <p className="text-base md:text-lg font-medium text-white/95 mb-4">
           Keringatmu berharga.
         </p>
 
@@ -79,7 +79,7 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        <p className="mt-4 text-xs text-white/60">
+        <p className="mt-4 text-xs text-white/85">
           Estimasi umum, bukan saran medis.
         </p>
       </div>
