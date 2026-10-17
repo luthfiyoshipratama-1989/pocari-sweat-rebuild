@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       publishedTime: article.publishedAt,
       url: `/news/${article.slug}`,
       siteName: "Pocari Sweat Rebuild",
+      images: ["/opengraph-image"],
     },
     twitter: {
       card: "summary_large_image",
@@ -172,7 +173,7 @@ export default async function NewsDetailPage({
               </div>
             )}
 
-            <div className="prose-content">
+            <div>
               <ContentRenderer blocks={article.body} />
             </div>
 

@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     title: "Ganti ion yang ikut keluar bersama keringat",
     description: "Lima ion ikut terbuang tiap kali berkeringat. Hitung kebutuhanmu.",
     url: "/",
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",

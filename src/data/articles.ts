@@ -18,12 +18,12 @@ export const articles: Article[] = [
       { type: "heading", level: 2, text: "Mulai dari sebelum berolahraga" },
       {
         type: "paragraph",
-        text: "Rasa haus datang setelah tubuh benar-benar kekurangan cairan. Mulailah minum 30-60 menit sebelum berolahraga, sekitar 300-500 ml. Perhatikan warna urin — kuning muda menandakan hidrasi cukup.",
+        text: "Rasa haus datang setelah tubuh benar-benar kekurangan cairan. Mulailah minum 30-60 menit sebelum berolahraga, sekitar 300-500 ml. Perhatikan warna urin, kuning muda menandakan hidrasi cukup.",
       },
       { type: "heading", level: 2, text: "Saat berolahraga" },
       {
         type: "paragraph",
-        text: "Menenggak banyak air sekaligus bisa membuat perut kembung. Lebih baik minum 150-200 ml setiap 15-20 menit. Untuk sesi di bawah 60 menit, air putih cukup. Untuk sesi lebih lama atau berkeringat banyak, tubuh kehilangan ion — minuman isotonik membantu menggantinya.",
+        text: "Menenggak banyak air sekaligus bisa membuat perut kembung. Lebih baik minum 150-200 ml setiap 15-20 menit. Untuk sesi di bawah 60 menit, air putih cukup. Untuk sesi lebih lama atau berkeringat banyak, tubuh kehilangan ion, minuman isotonik membantu menggantinya.",
       },
       { type: "heading", level: 2, text: "Setelah selesai" },
       {
@@ -44,7 +44,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "paragraph",
-        text: "Nasihat minum air putih delapan gelas sehari sudah sering kita dengar. Tapi saat tubuh berkeringat banyak — entah karena olahraga, cuaca panas, atau demam — air putih saja tidak cukup.",
+        text: "Nasihat minum air putih delapan gelas sehari sudah sering kita dengar. Tapi saat tubuh berkeringat banyak, entah karena olahraga, cuaca panas, atau demam, air putih saja tidak cukup.",
       },
       { type: "heading", level: 2, text: "Yang hilang bukan cuma air" },
       {
@@ -53,12 +53,12 @@ export const articles: Article[] = [
       },
       {
         type: "paragraph",
-        text: "Kalau kamu hanya minum air putih setelah berkeringat banyak, cairan tubuh memang bertambah, tapi kadar ion justru makin encer. Kondisi ini bisa membuatmu merasa lemas atau pusing. Kaitannya dengan kram otot masih diperdebatkan di literatur kedokteran olahraga — yang jelas, air putih saja tidak mengembalikan ion yang hilang.",
+        text: "Kalau kamu hanya minum air putih setelah berkeringat banyak, cairan tubuh memang bertambah, tapi kadar ion justru makin encer. Kondisi ini bisa membuatmu merasa lemas atau pusing. Kaitannya dengan kram otot masih diperdebatkan di literatur kedokteran olahraga. Yang jelas, air putih saja tidak mengembalikan ion yang hilang.",
       },
       { type: "heading", level: 2, text: "Kapan butuh lebih dari air putih" },
       {
         type: "paragraph",
-        text: "Olahraga lebih dari 60 menit, bekerja di luar ruangan saat terik, atau sedang demam — itu saat-saat tubuh benar-benar kehilangan ion. Minuman isotonik dengan komposisi ion menyerupai cairan tubuh membantu menggantinya lebih cepat daripada air putih. Khusus untuk diare, WHO menganjurkan oralit (ORS) sebagai penanganan utama, bukan minuman isotonik.",
+        text: "Olahraga lebih dari 60 menit, bekerja di luar ruangan saat terik, atau sedang demam. Itu saat-saat tubuh benar-benar kehilangan ion. Minuman isotonik dengan komposisi ion menyerupai cairan tubuh membantu menggantinya lebih cepat daripada air putih. Khusus untuk diare, WHO menganjurkan oralit (ORS) sebagai penanganan utama, bukan minuman isotonik.",
       },
       {
         type: "paragraph",
@@ -78,7 +78,7 @@ export const articles: Article[] = [
     body: [
       {
         type: "paragraph",
-        text: "Bekerja di ruangan ber-AC sering dianggap bebas dari risiko dehidrasi. Kamu tidak merasa gerah, tidak berkeringat, dan jarang merasa haus. Tapi tubuh tetap kehilangan cairan — lewat urine, napas, dan keringat yang menguap tanpa terasa.",
+        text: "Bekerja di ruangan ber-AC sering dianggap bebas dari risiko dehidrasi. Kamu tidak merasa gerah, tidak berkeringat, dan jarang merasa haus. Tapi tubuh tetap kehilangan cairan, lewat urine, napas, dan keringat yang menguap tanpa terasa.",
       },
       { type: "heading", level: 2, text: "Kenapa AC bikin lupa minum" },
       {

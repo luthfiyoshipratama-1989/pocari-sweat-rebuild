@@ -12,10 +12,6 @@ export async function getLatestArticles(limit = 3): Promise<Article[]> {
     .slice(0, limit)
 }
 
-export async function getActiveCampaign(): Promise<null> {
-  return null
-}
-
 export async function getAllProducts(): Promise<Product[]> {
   return products
 }

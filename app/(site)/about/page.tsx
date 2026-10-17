@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     description:
       "Rebuild portfolio dari situs Pocari Sweat. Proyek pribadi, tidak berafiliasi dengan Otsuka.",
     url: "/about",
+    images: ["/opengraph-image"],
   },
   twitter: {
     card: "summary_large_image",

@@ -9,8 +9,6 @@ type Step = 1 | 2 | 3 | 4;
 
 type FormData = {
   weight: number;
-  height: number;
-  age: number;
   activity: "sedentary" | "light" | "moderate" | "active" | "very-active";
   weather: "cool" | "normal" | "hot";
 };
@@ -33,8 +31,6 @@ export function HydrationCalculator() {
   const [step, setStep] = useState<Step>(1);
   const [form, setForm] = useState<FormData>({
     weight: 0,
-    height: 0,
-    age: 0,
     activity: "moderate",
     weather: "normal",
   });
@@ -52,14 +48,14 @@ export function HydrationCalculator() {
 
   const reset = () => {
     setStep(1);
-    setForm({ weight: 0, height: 0, age: 0, activity: "moderate", weather: "normal" });
+    setForm({ weight: 0, activity: "moderate", weather: "normal" });
   };
 
   return (
     <div className="bg-background rounded-2xl border border-border p-8 md:p-12">
       {/* Progress */}
       <div className="flex items-center gap-2 mb-8">
-        {[1, 2, 3, 4].map((n) => (
+        {[1, 2, 3].map((n) => (
           <div
             key={n}
             className={`h-1 flex-1 rounded-full transition-colors ${
@@ -82,40 +78,20 @@ export function HydrationCalculator() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <label className="text-sm font-medium mb-2 block">Berat (kg)</label>
-              <Input
-                type="number"
-                placeholder="65"
-                value={form.weight || ""}
-                onChange={(e) => setForm({ ...form, weight: Number(e.target.value) })}
-              />
-            </div>
-            <div>
-              <label className="text-sm font-medium mb-2 block">Tinggi (cm)</label>
-              <Input
-                type="number"
-                placeholder="170"
-                value={form.height || ""}
-                onChange={(e) => setForm({ ...form, height: Number(e.target.value) })}
-              />
-            </div>
-            <div>
-              <label className="text-sm font-medium mb-2 block">Usia (tahun)</label>
-              <Input
-                type="number"
-                placeholder="25"
-                value={form.age || ""}
-                onChange={(e) => setForm({ ...form, age: Number(e.target.value) })}
-              />
-            </div>
+          <div className="max-w-sm">
+            <label className="text-sm font-medium mb-2 block">Berat (kg)</label>
+            <Input
+              type="number"
+              placeholder="65"
+              value={form.weight || ""}
+              onChange={(e) => setForm({ ...form, weight: Number(e.target.value) })}
+            />
           </div>
 
           <div className="flex justify-end pt-4">
             <Button
               onClick={() => setStep(2)}
-              disabled={!form.weight || !form.height}
+              disabled={!form.weight}
               className="bg-marine hover:bg-marine-dark text-white"
             >
               Lanjut <ArrowRight className="w-4 h-4 ml-2" />

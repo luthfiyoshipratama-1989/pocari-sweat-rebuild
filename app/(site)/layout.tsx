@@ -13,7 +13,7 @@ import { IdentityStrip } from "@/components/blocks/IdentityStrip";
 export const metadata: Metadata = {
   metadataBase: new URL("https://pocari-sweat-rebuild.netlify.app"),
   title: {
-    default: "Pocari Sweat Rebuild — Portfolio",
+    default: "Pocari Sweat Rebuild - Portfolio",
     template: "%s | Pocari Sweat Rebuild",
   },
   description:
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "id_ID",
     siteName: "Pocari Sweat Rebuild",
-    title: "Pocari Sweat Rebuild — Portfolio",
+    title: "Pocari Sweat Rebuild - Portfolio",
     description:
       "Rebuild portfolio dari situs Pocari Sweat. Proyek pribadi, tidak berafiliasi dengan Otsuka.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pocari Sweat Rebuild — Portfolio",
+    title: "Pocari Sweat Rebuild - Portfolio",
     description:
       "Rebuild portfolio dari situs Pocari Sweat. Proyek pribadi, tidak berafiliasi dengan Otsuka.",
   },
