@@ -59,6 +59,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
 }
 
 @layer utilities {
