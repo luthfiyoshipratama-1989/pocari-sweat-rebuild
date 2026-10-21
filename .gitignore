@@ -52,3 +52,13 @@ opencode.json
 # browser tooling artifacts
 .playwright-mcp/
 screenshots/
+
+# AI tool artifacts
+AGENTS.md
+.impeccable/
+public/_headers
+
+# AI tool artifacts
+AGENTS.md
+.impeccable/
+public/_headers
