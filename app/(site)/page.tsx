@@ -57,7 +57,7 @@ export default async function HomePage() {
 
         <Container>
           <div className="relative grid grid-cols-1 gap-10 py-14 md:grid-cols-12 md:gap-8 md:py-20 items-center">
-            <div className="md:col-span-7 lg:col-span-6">
+            <div className="min-w-0 md:col-span-7 lg:col-span-6">
               <p className="text-base md:text-lg font-medium text-white/95 mb-4">
                 Keringatmu berharga.
               </p>
@@ -96,7 +96,7 @@ export default async function HomePage() {
                 aria-hidden="true"
                 className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15),transparent_60%)]"
               />
-              <div className="relative h-[180px] w-full max-w-[180px] md:h-[420px] md:max-w-[420px] lg:h-[520px]">
+              <div className="relative mt-8 mb-8 h-[200px] w-full max-w-[140px] md:mt-0 md:mb-0 md:h-[420px] md:max-w-[420px] lg:h-[520px]">
                 <HeroBottle />
               </div>
             </div>

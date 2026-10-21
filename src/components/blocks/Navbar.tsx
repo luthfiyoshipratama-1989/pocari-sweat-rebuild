@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon";
@@ -189,10 +190,13 @@ function MobileMenu({
     if (!open) return;
 
     const previouslyFocused = document.activeElement as HTMLElement | null;
-    const previousOverflow = document.body.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
 
-    // Kunci scroll body selama menu terbuka.
+    // Kunci scroll halaman selama menu terbuka. `html` ikut dikunci karena
+    // sebagian browser mobile (iOS Safari) mengabaikan overflow pada body saja.
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     const focusTimer = window.setTimeout(
       () => closeButtonRef.current?.focus(),
       0
@@ -233,28 +237,35 @@ function MobileMenu({
     return () => {
       window.clearTimeout(focusTimer);
       document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = previousOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
       previouslyFocused?.focus?.();
     };
   }, [open, setOpen]);
 
   if (!open) return null;
 
-  return (
+  // Portal ke <body>: header punya `backdrop-filter` saat ter-scroll, dan itu
+  // membuat header menjadi containing block untuk `position: fixed` sehingga
+  // overlay hanya setinggi header. Portal melepaskannya dari ancestor tersebut.
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <div
       id="mobile-menu"
       ref={panelRef}
       role="dialog"
       aria-modal="true"
       aria-label="Menu navigasi"
-      className="md:hidden fixed inset-0 z-[60] bg-background overflow-y-auto overscroll-contain"
+      className="md:hidden fixed inset-0 z-[9999] bg-background"
     >
-      <div className="relative flex flex-col p-4 gap-1 pt-16">
+      {/* Bar tombol tutup terpisah dari area scroll agar selalu terlihat. */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex justify-end bg-gradient-to-b from-background via-background/95 to-transparent p-4">
         <button
           ref={closeButtonRef}
           type="button"
           onClick={() => setOpen(false)}
-          className="absolute top-4 right-4 z-20 inline-flex items-center justify-center rounded-md p-2 hover:bg-accent transition-colors text-foreground"
+          className="pointer-events-auto inline-flex items-center justify-center rounded-md p-2 hover:bg-accent transition-colors text-foreground"
           aria-label="Tutup menu"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -262,6 +273,9 @@ function MobileMenu({
             <path d="m6 6 12 12" />
           </svg>
         </button>
+      </div>
+
+      <div className="flex h-full w-full flex-col gap-1 overflow-y-auto overscroll-contain px-4 pb-10 pt-20">
         <div className="px-3 py-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
           Produk
         </div>
@@ -312,6 +326,7 @@ function MobileMenu({
           </Link>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
