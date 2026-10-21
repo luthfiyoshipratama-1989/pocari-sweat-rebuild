@@ -48,10 +48,22 @@ function FlatOriginal() {
   )
 }
 
-/** Flat vector: Ion Water — badan putih, label cyan, tutup putih. */
+/** Flat vector: Ion Water — botol ramping, label cyan, garnish irisan jeruk. */
 function FlatIonWater() {
   return (
     <>
+      {/* Irisan jeruk: pembeda visual Ion Water (rasa jeruk). Digambar lebih dulu
+          agar sebagian tertutup badan botol dan terlihat seperti garnish. */}
+      <g>
+        <circle cx="99" cy="102" r="21" fill="#f59e0b" />
+        <circle cx="99" cy="102" r="16" fill="#fde68a" />
+        <g stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round">
+          <line x1="84" y1="102" x2="114" y2="102" />
+          <line x1="99" y1="87" x2="99" y2="117" />
+          <line x1="88.4" y1="91.4" x2="109.6" y2="112.6" />
+          <line x1="88.4" y1="112.6" x2="109.6" y2="91.4" />
+        </g>
+      </g>
       {/* Leher botol */}
       <path d={ION_NECK} fill="#ffffff" opacity="0.8" stroke="#cbd5e1" strokeWidth="1.5" />
       {/* Badan botol (ramping) */}
@@ -75,6 +87,8 @@ function FlatJelly() {
     <>
       {/* Badan kantong */}
       <rect x="20" y="52" width="80" height="240" rx="20" fill="#f8fafc" stroke="#cbd5e1" strokeWidth="1.5" />
+      {/* Segel atas kantong — menegaskan bentuk pouch, bukan botol */}
+      <rect x="30" y="58" width="60" height="8" rx="4" fill="#dbeafe" />
       {/* Corong / tutup di tengah atas */}
       <rect x="52" y="22" width="16" height="10" rx="3" fill="#e2e8f0" />
       <path d="M56 32 L54 52 L66 52 L64 32 Z" fill="#e2e8f0" />
@@ -83,6 +97,12 @@ function FlatJelly() {
       {/* Teks pita (simulasi) */}
       <rect x="44" y="172" width="32" height="6" rx="3" fill="#ffffff" opacity="0.95" />
       <rect x="50" y="184" width="20" height="5" rx="2.5" fill="#ffffff" opacity="0.7" />
+      {/* Potongan jelly di dasar kantong */}
+      <g fill="#93c5fd" opacity="0.85">
+        <circle cx="40" cy="266" r="7" />
+        <circle cx="60" cy="276" r="6" />
+        <circle cx="79" cy="264" r="5" />
+      </g>
     </>
   )
 }

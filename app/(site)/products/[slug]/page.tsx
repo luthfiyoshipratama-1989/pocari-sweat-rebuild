@@ -86,9 +86,10 @@ export default async function ProductDetailPage({
             <ProductImage
               src={product.image}
               alt={product.name}
+              slug={product.slug}
               sizes="(min-width: 768px) 50vw, 100vw"
               priority
-              className="aspect-square bg-muted rounded-2xl overflow-hidden"
+              className="h-[240px] w-full bg-muted rounded-2xl overflow-hidden md:h-auto md:aspect-square"
             />
 
             <div>

@@ -1,6 +1,10 @@
 import Image from "next/image"
 import { cn } from "@/lib/utils"
-import { BottleSilhouette } from "./BottleSilhouette"
+import {
+  BottleSilhouette,
+  bottleVariantForSlug,
+  type BottleVariant,
+} from "./BottleSilhouette"
 
 type ProductImageProps = {
   src: string | null
@@ -9,6 +13,15 @@ type ProductImageProps = {
   sizes?: string
   priority?: boolean
   variant?: "product" | "article"
+  /** Slug produk dipakai untuk memilih ilustrasi fallback yang berbeda. */
+  slug?: string
+}
+
+/** Latar fallback dibedakan per varian agar produk tidak terlihat identik. */
+const fallbackBackground: Record<BottleVariant, string> = {
+  original: "bg-gradient-to-b from-sky/20 to-marine/5",
+  "ion-water": "bg-gradient-to-br from-cyan-100/70 via-sky/15 to-marine/5",
+  jelly: "bg-gradient-to-br from-sky-light/50 via-cyan-50/50 to-marine/5",
 }
 
 export function ProductImage({
@@ -18,6 +31,7 @@ export function ProductImage({
   sizes = "(min-width: 768px) 33vw, 100vw",
   priority = false,
   variant = "product",
+  slug,
 }: ProductImageProps) {
   if (src) {
     return (
@@ -50,15 +64,24 @@ export function ProductImage({
     )
   }
 
+  const bottleVariant: BottleVariant = slug
+    ? bottleVariantForSlug(slug)
+    : "original"
+
   return (
     <div
       className={cn(
-        "flex items-center justify-center bg-gradient-to-b from-sky/20 to-marine/5",
+        "flex items-center justify-center",
+        fallbackBackground[bottleVariant],
         className
       )}
       aria-hidden="true"
+      data-illustration={bottleVariant}
     >
-      <BottleSilhouette className="h-3/4 text-marine-text" />
+      <BottleSilhouette
+        variant={bottleVariant}
+        className="h-[85%] text-marine-text"
+      />
     </div>
   )
 }
