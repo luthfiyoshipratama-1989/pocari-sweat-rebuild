@@ -6,18 +6,18 @@ Rebuild situs Pocari Sweat Indonesia. Dibuat sebagai studi kasus desain dan lati
 
 ## Live Demo
 
-https://pocari-sweat-rebuild.netlify.app
+https://pocari-sweat-rebuild.luthfiyoshipratama.workers.dev
 
 ## Tech Stack
 
-- **Framework:** Next.js 14 (App Router)
+- **Framework:** Next.js 16 (App Router)
 - **Bahasa:** TypeScript
 - **Styling:** Tailwind CSS v3
 - **UI Components:** shadcn/ui (Radix UI)
 - **Icons:** Lucide React
 - **Animasi:** Framer Motion
 - **Font:** Plus Jakarta Sans (body) + Bricolage Grotesque (display)
-- **Deploy:** Netlify
+- **Deploy:** Cloudflare Workers
 
 ## Fitur
 
