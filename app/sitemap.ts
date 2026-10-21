@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next"
 import { products } from "@/data/products"
 import { articles } from "@/data/articles"
+import { SITE_URL } from "@/lib/constants"
 
-const BASE_URL = "https://pocari-sweat-rebuild.netlify.app"
+const BASE_URL = SITE_URL
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()

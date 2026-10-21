@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import "../globals.css";
+import { SITE_URL } from "@/lib/constants";
 import { Header } from "@/components/blocks/Navbar";
 import { Footer } from "@/components/blocks/Footer";
 import { IdentityStrip } from "@/components/blocks/IdentityStrip";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pocari-sweat-rebuild.pages.dev"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Pocari Sweat Rebuild - Portfolio",
     template: "%s | Pocari Sweat Rebuild",

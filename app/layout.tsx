@@ -6,22 +6,24 @@ import "@fontsource/bricolage-grotesque/400.css";
 import "@fontsource/bricolage-grotesque/600.css";
 import "@fontsource/bricolage-grotesque/700.css";
 import "@fontsource/bricolage-grotesque/800.css";
+import "./globals.css";
 
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 /**
  * SECURITY/SEO: metadataBase must resolve at the ROOT layout, otherwise Next.js
  * falls back to http://localhost:3000 and emits absolute localhost URLs for
  * openGraph/twitter images declared by root-level files (e.g. app/opengraph-image.tsx).
- * A poisoned/incorrect base lets a crawler cache OG images pointing at an
- * attacker-controlled host (OG image poisoning / cache poisoning).
  *
- * FONTS: self-hosted via @fontsource (bundled by Next at build time).
- * Do NOT reintroduce `next/font/google` — it fetches from Google Fonts during
- * `next build`, which fails in the Cloudflare Workers build environment.
+ * FONTS: self-hosted via @fontsource (bundled at build time). Do NOT reintroduce
+ * `next/font/google` — it fetches from Google Fonts during `next build`.
+ *
+ * CSS: globals.css lives HERE so every route — including app/not-found.tsx —
+ * receives the Tailwind base layer and theme tokens.
  */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pocari-sweat-rebuild.pages.dev"),
+  metadataBase: new URL(SITE_URL),
 };
 
 export default function RootLayout({

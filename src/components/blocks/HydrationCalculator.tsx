@@ -7,6 +7,9 @@ import { Droplet, ArrowRight, ArrowLeft, RotateCcw } from "lucide-react";
 
 type Step = 1 | 2 | 3 | 4;
 
+const MIN_WEIGHT_KG = 20;
+const MAX_WEIGHT_KG = 250;
+
 type FormData = {
   weight: number;
   activity: "sedentary" | "light" | "moderate" | "active" | "very-active";
@@ -35,9 +38,17 @@ export function HydrationCalculator() {
     weather: "normal",
   });
 
+  const isWeightValid =
+    Number.isFinite(form.weight) &&
+    form.weight >= MIN_WEIGHT_KG &&
+    form.weight <= MAX_WEIGHT_KG;
+  const showWeightError = form.weight !== 0 && !isWeightValid;
+
   const calculateResult = () => {
+    // Tolak input di luar rentang wajar; jangan pernah menghitung dari NaN/0.
+    const safeWeight = isWeightValid ? form.weight : 0;
     // Base: 35 ml per kg berat badan
-    const base = form.weight * 35;
+    const base = safeWeight * 35;
     const activityFactor = activityOptions.find((a) => a.value === form.activity)?.factor || 1;
     const weatherFactor = weatherOptions.find((w) => w.value === form.weather)?.factor || 1;
     const total = Math.round((base * activityFactor * weatherFactor) / 100) * 100;
@@ -79,19 +90,46 @@ export function HydrationCalculator() {
           </div>
 
           <div className="max-w-sm">
-            <label className="text-sm font-medium mb-2 block">Berat (kg)</label>
+            <label htmlFor="berat" className="text-sm font-medium mb-2 block">
+              Berat (kg)
+            </label>
             <Input
+              id="berat"
               type="number"
+              inputMode="numeric"
+              min={MIN_WEIGHT_KG}
+              max={MAX_WEIGHT_KG}
+              step={1}
               placeholder="65"
+              aria-invalid={showWeightError}
+              aria-describedby={showWeightError ? "berat-error" : undefined}
               value={form.weight || ""}
-              onChange={(e) => setForm({ ...form, weight: Number(e.target.value) })}
+              onChange={(e) =>
+                setForm({
+                  ...form,
+                  weight:
+                    e.target.value === "" ? 0 : Number(e.target.value),
+                })
+              }
             />
+            {showWeightError && (
+              <p
+                id="berat-error"
+                role="alert"
+                className="mt-2 text-sm text-destructive"
+              >
+                Berat harus antara {MIN_WEIGHT_KG} dan {MAX_WEIGHT_KG} kg.
+              </p>
+            )}
+            <p className="mt-2 text-xs text-muted-foreground">
+              Rumus ini untuk usia 18+ dengan berat {MIN_WEIGHT_KG}–{MAX_WEIGHT_KG} kg.
+            </p>
           </div>
 
           <div className="flex justify-end pt-4">
             <Button
-              onClick={() => setStep(2)}
-              disabled={!form.weight}
+              onClick={() => isWeightValid && setStep(2)}
+              disabled={!isWeightValid}
               className="bg-marine hover:bg-marine-dark text-white"
             >
               Lanjut <ArrowRight className="w-4 h-4 ml-2" />
@@ -209,7 +247,7 @@ export function HydrationCalculator() {
                     <span className="text-2xl md:text-3xl text-muted-foreground ml-2">L / hari</span>
                   </div>
                   <p className="text-muted-foreground mb-6">
-                    Setara dengan <span className="font-semibold text-foreground">{result.bottles} botol Pocari Sweat (500ml)</span>
+                    Setara dengan <span className="font-semibold text-foreground">{result.bottles} botol 500 ml cairan</span>
                   </p>
                   <div className="text-sm text-muted-foreground max-w-md mx-auto">
                     Kebutuhan cairanmu dihitung berdasarkan berat badan, level aktivitas, dan cuaca di sekitarmu.
