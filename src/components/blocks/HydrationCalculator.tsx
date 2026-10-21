@@ -65,7 +65,7 @@ export function HydrationCalculator() {
   return (
     <div className="bg-background rounded-2xl border border-border p-8 md:p-12">
       {/* Progress */}
-      <div className="flex items-center gap-2 mb-8">
+      <div className="flex items-center gap-2 mb-8" aria-hidden="true">
         {[1, 2, 3].map((n) => (
           <div
             key={n}
@@ -75,6 +75,14 @@ export function HydrationCalculator() {
           />
         ))}
       </div>
+
+      {/* Screen-reader announcement for step changes */}
+      <p aria-live="polite" aria-atomic="true" className="sr-only">
+        {step === 1 && "Langkah 1 dari 3: berat badan"}
+        {step === 2 && "Langkah 2 dari 3: level aktivitas"}
+        {step === 3 && "Langkah 3 dari 3: cuaca"}
+        {step === 4 && "Hasil perhitungan kebutuhan cairan"}
+      </p>
 
       {/* Step 1 */}
       {step === 1 && (
@@ -143,7 +151,10 @@ export function HydrationCalculator() {
         <div className="space-y-6">
           <div>
             <p className="text-sm text-marine font-medium mb-2">Langkah 2 dari 3</p>
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+            <h2
+              id="aktivitas-heading"
+              className="text-2xl md:text-3xl font-semibold tracking-tight mb-2"
+            >
               Seberapa aktif kamu?
             </h2>
             <p className="text-muted-foreground">
@@ -151,10 +162,16 @@ export function HydrationCalculator() {
             </p>
           </div>
 
-          <div className="space-y-2">
+          <div
+            className="space-y-2"
+            role="group"
+            aria-labelledby="aktivitas-heading"
+          >
             {activityOptions.map((opt) => (
               <button
                 key={opt.value}
+                type="button"
+                aria-pressed={form.activity === opt.value}
                 onClick={() => setForm({ ...form, activity: opt.value })}
                 className={`w-full text-left p-4 rounded-lg border transition-colors ${
                   form.activity === opt.value
@@ -187,7 +204,10 @@ export function HydrationCalculator() {
         <div className="space-y-6">
           <div>
             <p className="text-sm text-marine font-medium mb-2">Langkah 3 dari 3</p>
-            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+            <h2
+              id="cuaca-heading"
+              className="text-2xl md:text-3xl font-semibold tracking-tight mb-2"
+            >
               Cuaca di sekitarmu?
             </h2>
             <p className="text-muted-foreground">
@@ -195,10 +215,16 @@ export function HydrationCalculator() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div
+            className="grid grid-cols-1 md:grid-cols-3 gap-3"
+            role="group"
+            aria-labelledby="cuaca-heading"
+          >
             {weatherOptions.map((opt) => (
               <button
                 key={opt.value}
+                type="button"
+                aria-pressed={form.weather === opt.value}
                 onClick={() => setForm({ ...form, weather: opt.value })}
                 className={`text-left p-4 rounded-lg border transition-colors ${
                   form.weather === opt.value

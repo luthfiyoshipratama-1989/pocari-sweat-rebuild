@@ -37,7 +37,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="text-sm font-medium mb-4">Produk</h3>
+            <h2 className="text-sm font-medium mb-4">Produk</h2>
             <ul className="space-y-3">
               {footerLinks.products.map((link) => (
                 <li key={link.href}>
@@ -53,7 +53,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="text-sm font-medium mb-4">Tentang</h3>
+            <h2 className="text-sm font-medium mb-4">Tentang</h2>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
@@ -69,7 +69,7 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="text-sm font-medium mb-4">Sosial</h3>
+            <h2 className="text-sm font-medium mb-4">Sosial</h2>
             <ul className="space-y-3">
               {socialLinks.map((link) => (
                 <li key={link.href}>

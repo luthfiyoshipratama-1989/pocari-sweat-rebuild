@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/blocks/ProductCard";
 import { ProductImage } from "@/components/common/ProductImage";
 import { Reveal } from "@/components/common/Reveal";
 import type { Article } from "@/data/types";
+import { products as allProducts } from "@/data/products";
 import { getFeaturedProducts, getLatestArticles } from "@/lib/queries";
 
 import type { Metadata } from "next"
@@ -34,6 +35,11 @@ export default async function HomePage() {
     getFeaturedProducts(3),
     getLatestArticles(3),
   ]);
+
+  // Satu sumber data: komposisi ion diambil dari src/data/products.ts, bukan hardcoded.
+  const ionTable =
+    allProducts.find((p) => p.slug === "pocari-sweat-original")?.ionComposition ??
+    [];
 
   return (
     <>
@@ -116,24 +122,18 @@ export default async function HomePage() {
           </Reveal>
 
           <Reveal delay={0.08} className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-8 md:mt-10">
-            {[
-              { sym: "Na⁺", name: "Natrium", mg: "49" },
-              { sym: "K⁺", name: "Kalium", mg: "20" },
-              { sym: "Ca²⁺", name: "Kalsium", mg: "2" },
-              { sym: "Mg²⁺", name: "Magnesium", mg: "0.6" },
-              { sym: "Cl⁻", name: "Klorida", mg: "60" },
-            ].map((ion) => (
+            {ionTable.map((ion) => (
               <div
-                key={ion.sym}
+                key={ion.symbol}
                 className={`border border-border rounded-lg p-4 bg-background ${
-                  ion.sym === "Cl⁻" ? "col-span-2 md:col-span-1" : ""
+                  ion.symbol === "Cl⁻" ? "col-span-2 md:col-span-1" : ""
                 }`}
               >
                 <div className="font-display text-2xl font-bold text-marine mb-1">
-                  {ion.sym}
+                  {ion.symbol}
                 </div>
                 <div className="text-xs font-mono text-muted-foreground">
-                  {ion.mg} mg
+                  {ion.amount}
                 </div>
                 <div className="text-xs text-muted-foreground">{ion.name}</div>
               </div>
@@ -153,7 +153,11 @@ export default async function HomePage() {
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Cara mengganti ion sesuai aktivitasmu.</h2>
               <p className="text-muted-foreground mt-2">Tiga situasi berbeda: setelah lari, saat hari biasa, atau ketika tangan sedang penuh.</p>
             </div>
-            <Link href="/products" className="text-sm text-marine-text hover:underline block self-start md:self-auto">
+            <Link
+              href="/products"
+              aria-label="Lihat semua produk"
+              className="text-sm text-marine-text hover:underline block self-start md:self-auto"
+            >
               Lihat semua →
             </Link>
           </Reveal>
@@ -177,7 +181,11 @@ export default async function HomePage() {
                 </p>
                 <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Berita Terbaru</h2>
               </div>
-              <Link href="/news" className="text-sm text-marine-text hover:underline block self-start md:self-auto">
+              <Link
+                href="/news"
+                aria-label="Lihat semua berita"
+                className="text-sm text-marine-text hover:underline block self-start md:self-auto"
+              >
                 Lihat semua →
               </Link>
             </Reveal>

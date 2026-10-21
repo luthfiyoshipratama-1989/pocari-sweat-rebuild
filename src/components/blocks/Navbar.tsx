@@ -182,15 +182,77 @@ function MobileMenu({
   open: boolean;
   setOpen: (open: boolean) => void;
 }) {
+  const panelRef = React.useRef<HTMLDivElement>(null);
+  const closeButtonRef = React.useRef<HTMLButtonElement>(null);
+
+  React.useEffect(() => {
+    if (!open) return;
+
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+
+    // Kunci scroll body selama menu terbuka.
+    document.body.style.overflow = "hidden";
+    const focusTimer = window.setTimeout(
+      () => closeButtonRef.current?.focus(),
+      0
+    );
+
+    const getFocusable = () =>
+      Array.from(
+        panelRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        ) ?? []
+      );
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      // Focus trap sederhana: Tab/Shift+Tab berputar di dalam panel.
+      const focusable = getFocusable();
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus?.();
+    };
+  }, [open, setOpen]);
+
   if (!open) return null;
 
   return (
     <div
       id="mobile-menu"
+      ref={panelRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Menu navigasi"
       className="md:hidden fixed inset-0 z-[60] bg-background overflow-y-auto overscroll-contain"
     >
       <div className="relative flex flex-col p-4 gap-1 pt-16">
         <button
+          ref={closeButtonRef}
+          type="button"
           onClick={() => setOpen(false)}
           className="absolute top-4 right-4 z-20 inline-flex items-center justify-center rounded-md p-2 hover:bg-accent transition-colors text-foreground"
           aria-label="Tutup menu"
